@@ -1,0 +1,19 @@
+<h1>Пиццы</h1>
+<ul>
+{% for p in pizzas %}
+    <li>{{ p.name }}</li>
+    <div>
+        <mark>Ингридиенты</mark>
+    </div>
+    <ul>
+        {% for ingridient in p.toppings.all %}
+            <li>{{ ingridient }}</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+</ul>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ modelform.as_p }}
+    <input type="submit" value="place order">
+</form>
